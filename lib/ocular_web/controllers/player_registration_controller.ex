@@ -11,11 +11,11 @@ defmodule OcularWeb.PlayerRegistrationController do
   def create(conn, player_params) do
     case Accounts.register_player(player_params) do
       {:ok, player} ->
-        {:ok, _} =
-          Accounts.deliver_player_confirmation_instructions(
-            player,
-            &url(~p"/players/confirm/#{&1}")
-          )
+        # {:ok, _} =
+        #   Accounts.deliver_player_confirmation_instructions(
+        #     player,
+        #     &url(~p"/players/confirm/#{&1}")
+        #   )
 
         conn
         |> put_flash(:info, "Player created successfully.")
