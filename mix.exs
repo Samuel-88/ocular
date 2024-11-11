@@ -69,7 +69,7 @@ defmodule Ocular.MixProject do
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["esbuild.install --if-missing"],
       "assets.build": ["esbuild ocular"],
-      "assets.deploy": ["esbuild default --minify --loader=.jpg=file", "phx.digest"]
+      "assets.deploy": ["esbuild default --minify --loader:.jpg=file", "phx.digest"]
     ]
   end
 end
