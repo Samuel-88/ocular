@@ -36,6 +36,6 @@ defmodule Ocular.Events.Build do
       :event_id,
       :player_id
     ])
-    |> validate_required([:weapon, :offhand, :head, :chest, :feet, :cape, :food, :pot, :event_id])
+    |> validate_required([:weapon, :head, :chest, :feet, :cape, :food, :pot, :event_id])
   end
 end
