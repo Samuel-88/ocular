@@ -10,7 +10,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href={~p"/assets/app.css"} />
-    <title>Eventos</title>
+    <title>Events</title>
   </head>
 
   <body>
@@ -36,7 +36,7 @@
                     <td class="p-3"><%= event.name %></td>
                     <td class="p-3">Caller: <%= event.caller %></td>
                     <td class="p-3">Location: <%= event.location %></td>
-                    <td class="p-3" type="time" id="event_time"><%= event.time %></td>
+                    <td class="p-3"><%= String.slice(event.time, 0, 10) <> " " <> String.slice(event.time, 11, 15) <> "UTC" %></td>
                     <td class="p-3">
                       <button type="submit" class="btn btn-dark">
                         <a href={"/events/#{event.id}"}>Check Event</a>
@@ -59,11 +59,6 @@
       </main>
     </div>
     <script>
-          window.onload = function() {
-          var time = document.getElementById('event_time').innerHTML;
-          document.getElementById('event_time').innerHTML = new Date(time);
-      };
-          
     </script>
   </body>
 </html>
