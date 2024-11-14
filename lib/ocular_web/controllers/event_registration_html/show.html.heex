@@ -55,7 +55,9 @@
                   <%= for build <- @builds do %>
                     <tr>
                       <td><%= build.weapon %></td>
-                      <td><%= Ocular.Accounts.render_player_event(build.id,  @current_player) %></td>
+                      <td>
+                        <%= Ocular.Accounts.render_player_event(build.id, @current_player) %>
+                      </td>
                       <td><%= build.offhand %></td>
                       <td><%= build.head %></td>
                       <td><%= build.chest %></td>

@@ -223,6 +223,28 @@ defmodule OcularWeb.PlayerAuth do
     end
   end
 
+  def require_admin_player(conn, _opts) do
+    current_player = conn.assigns[:current_player]
+
+    cond do
+      current_player && current_player.admin? ->
+        conn
+
+      current_player ->
+        conn
+        |> put_flash(:error, "You can only access this page if you are an admin.")
+        |> redirect(to: ~p"/")
+        |> halt()
+
+      true ->
+        conn
+        |> put_flash(:error, "You must log in to access this page.")
+        |> maybe_store_return_to()
+        |> redirect(to: ~p"/players/log_in")
+        |> halt()
+    end
+  end
+
   defp put_token_in_session(conn, token) do
     conn
     |> put_session(:player_token, token)

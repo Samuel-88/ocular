@@ -68,12 +68,22 @@ defmodule OcularWeb.Router do
 
     get "/events", EventRegistrationController, :index
     get "/events/:event_id", EventRegistrationController, :show
-    get "/events/:event_id/edit", EventRegistrationController, :edit
-    post "/events/:event_id/edit", EventRegistrationController, :update
-    get "/events/register/new", EventRegistrationController, :new
-    post "/events/register/new", EventRegistrationController, :create
+
     get "/builds/:build_id", EventRegistrationController, :update_build
     get "/builds/:build_id/leave_build", EventRegistrationController, :leave_build
+    post "/events/:event_id/edit", EventRegistrationController, :update
+  end
+
+  scope "/", OcularWeb do
+    pipe_through [:browser, :require_authenticated_player, :require_admin_player]
+
+    get "/players", PlayerRegistrationController, :index
+    get "/players/:player_id/authorize/:authorize", PlayerRegistrationController, :authorize
+
+    get "/events/:event_id/edit", EventRegistrationController, :edit
+
+    get "/events/register/new", EventRegistrationController, :new
+    post "/events/register/new", EventRegistrationController, :create
   end
 
   scope "/", OcularWeb do

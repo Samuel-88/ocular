@@ -16,6 +16,7 @@
           <ul>
             <%= if @current_player.admin? do %>
               <%= raw("<li><a href=\"events/register/new\">Create Event</a></li>") %>
+              <%= raw("<li><a href=\"players\">Players</a></li>") %>
             <% end %>
             <li><a href="events">Events</a></li>
             <li><a href="players/log_out">Log Out</a></li>
