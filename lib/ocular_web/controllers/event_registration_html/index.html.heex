@@ -30,13 +30,13 @@
         <div class="container-events">
           <div class="mx-auto">
             <div class="table-responsive-sm">
-              <%= for event <- Ocular.Repo.all(Ocular.Events.Event) do %>
+              <%= for event <- Ocular.Events.get_showable_events() do %>
                 <table class="table table-dark table-events">
                   <tr>
                     <td class="p-3"><%= event.name %></td>
                     <td class="p-3">Caller: <%= event.caller %></td>
                     <td class="p-3">Location: <%= event.location %></td>
-                    <td class="p-3"><%= String.slice(event.time, 0, 10) <> " " <> String.slice(event.time, 11, 15) <> "UTC" %></td>
+                    <td class="p-3"><%= Ocular.Events.parse_time(event.time) %></td>
                     <td class="p-3">
                       <button type="submit" class="btn btn-dark">
                         <a href={"/events/#{event.id}"}>Check Event</a>

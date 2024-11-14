@@ -10,7 +10,7 @@ defmodule Ocular.Events.Event do
     field :name, :string
     field :objective, :string
     field :tier, :integer
-    field :time, :string
+    field :time, :naive_datetime
     field :regeared?, :boolean
 
     timestamps(type: :utc_datetime)

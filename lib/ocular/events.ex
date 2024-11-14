@@ -199,4 +199,16 @@ defmodule Ocular.Events do
   def change_build(%Build{} = build, attrs \\ %{}) do
     Build.changeset(build, attrs)
   end
+
+  def get_showable_events do
+    query = from e in Event, where: e.time > datetime_add(^NaiveDateTime.utc_now(), -2, "hour")
+
+    Repo.all(query)
+  end
+
+  def parse_time(time) do
+    time = NaiveDateTime.to_string(time)
+
+    String.slice(time, 0, 10) <> " " <> String.slice(time, 11, 5) <> "UTC"
+  end
 end

@@ -16,7 +16,14 @@ defmodule OcularWeb.EventRegistrationController do
 
   def create(conn, event_params = %{"regeared?" => regeared?}) do
     regeared? = if regeared? == "true", do: true, else: false
-    event_params = Map.put(event_params, "regeared?", regeared?)
+
+    {:ok, time} =
+      event_params["time"]
+      |> String.replace("T", " ")
+      |> Kernel.<>(":00")
+      |> NaiveDateTime.from_iso8601()
+
+    event_params = Map.put(event_params, "regeared?", regeared?) |> Map.put("time", time)
 
     case Events.create_event(event_params) do
       {:ok, event} ->
