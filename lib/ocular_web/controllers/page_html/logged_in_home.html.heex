@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href={~p"/assets/app.css"} />
-    <title>Home Guild</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Ocular</title>
   </head>
   <body>
     <div class="container">
@@ -32,16 +33,6 @@
           </button>
         </div>
         <div id="carousel-background"></div>
-        <%= if @current_player.authorized? == false do %>
-          raw("""
-          <div id="modal" class="modal modal-open" style="display:flex">
-            <div class="modal-content">
-              <span class="close-btn">&times;</span>
-              <h1>Please contact an admin to authorize your access!</h1>
-            </div>
-          </div>
-          """)
-        <% end %>
       </main>
       <footer class="footer">
         <div>

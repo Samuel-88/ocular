@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href={~p"/assets/app.css"} />
-    <title>Event Registration</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Ocular - Create Event</title>
   </head>
 
   <body>
@@ -16,7 +17,7 @@
         </div>
         <nav>
           <ul>
-            <li><a href="../">Home</a></li>
+            <li><a href="../../">Home</a></li>
             <li><a href="/events">Events</a></li>
             <li><a href="../../players/log_out">Log Out</a></li>
           </ul>
@@ -39,10 +40,10 @@
 
             <div class="register flex-basis-45">
               <label for="item_power">Item Power</label>
-              <input type="text" name="item_power" id="item_power" required />
+              <input type="number" name="item_power" id="item_power" required />
 
               <label for="tier">Tier</label>
-              <input type="text" id="tier" name="tier" required />
+              <input type="number" id="tier" name="tier" required />
 
               <label for="time">Time</label>
               <input type="datetime-local" id="time" name="time" required />
