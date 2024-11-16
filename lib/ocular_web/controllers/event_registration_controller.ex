@@ -1,6 +1,8 @@
 defmodule OcularWeb.EventRegistrationController do
   use OcularWeb, :controller
 
+  require Logger
+
   alias Ocular.Events
 
   def index(conn, _params), do: render(conn, "index.html", layout: false)
@@ -24,6 +26,8 @@ defmodule OcularWeb.EventRegistrationController do
       |> NaiveDateTime.from_iso8601()
 
     event_params = Map.put(event_params, "regeared?", regeared?) |> Map.put("time", time)
+
+    Logger.info("Creating event params: `#{inspect(event_params)}`")
 
     case Events.create_event(event_params) do
       {:ok, event} ->
