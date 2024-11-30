@@ -10,7 +10,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href={~p"/assets/app.css"} />
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <title>Ocular - Events</title>
   </head>
 
@@ -37,7 +37,7 @@
                     <td class="p-3"><%= event.name %></td>
                     <td class="p-3">Caller: <%= event.caller %></td>
                     <td class="p-3">Location: <%= event.location %></td>
-                    <td class="p-3"><%= Ocular.Events.parse_time(event.time) %></td>
+                    <td class="p-3" id="eventTime"><%= event.time %></td>
                     <td class="p-3">
                       <button type="submit" class="btn btn-dark">
                         <a href={"/events/#{event.id}"}>Check Event</a>
@@ -60,6 +60,12 @@
       </main>
     </div>
     <script>
+    let time = document.getElementById("eventTime").innerHTML;
+    let month = time.slice(5, 7) - 1;
+    let parsedMonth = month.toString();
+    let utc = Date.UTC(time.slice(0, 4), parsedMonth, time.slice(8, 10), time.slice(11, 13), time.slice(14, 16));
+
+     window.onload = function() { document.getElementById("eventTime").innerHTML = new Date(utc).toLocaleString(); }
     </script>
   </body>
 </html>

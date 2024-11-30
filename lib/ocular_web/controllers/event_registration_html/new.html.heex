@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href={~p"/assets/app.css"} />
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <title>Ocular - Create Event</title>
   </head>
 
@@ -74,6 +74,18 @@
       </main>
     </div>
     <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', handleSubmit);
+
+      function handleSubmit(event) {
+        const data = new FormData(event.target);
+        const time = data.get('time');
+
+        const date = new Date(time);
+        const dateUTC = date.toISOString();
+
+        event.target['time'].value = dateUTC.slice(0, 16);
+      }
     </script>
   </body>
 </html>
