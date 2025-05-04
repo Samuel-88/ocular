@@ -1,4 +1,4 @@
-# Ocular
+# Ocular Gaming
 
 To start your Phoenix server:
 
